@@ -55,33 +55,41 @@ Install dependencies from the project root (sr-dynamic-rail-engine):
 bash
 npm install
 Windows PowerShell Note: If script execution is blocked (npm.ps1), run npm.cmd install or switch to cmd.
-'''
+
 Start the local server:
-'''
+
 Bash
 npm start
-'''
-Open in browser:
 
+Open in browser:
+```text
 Plaintext
 http://localhost:3000
-Demo Credentials
-Passenger Account: mirthun@jain.ac.in / password123 (or create any new account via New User Registration)
+```
 
-Hidden Admin Account: admin@sr.rail.gov.in / SR_ADMIN_2026
+### AI Use Disclosure
 
-AI Use Disclosure
 AI assistance (Gemini) was used as a collaborative drafting and prototyping aid during coursework development, subject to manual review, verification, and refinement by the author:
 
-Problem Framing & Workbook Structuring: Helped organize observations, five-element checks, comparisons, and drafts into the required workbook formats while keeping final problem statements and boundaries aligned with the coursework problem.
+### Problem Framing & Workbook Structuring:
 
-Algorithm & Code Prototyping: Assisted in drafting pseudocode variations, test scenarios, and full-stack Express/HTML/CSS/JS scaffolding for local testing.
+ Helped organize observations, five-element checks, comparisons, and drafts into the required workbook formats while keeping final problem statements and boundaries aligned with the coursework problem.
 
-Human Verification & Accountability: All logic edge cases (such as symmetric time differences, seat buffers, and invalid capacity guards), UI themes, train corridor entries, and repository submissions were inspected and tested locally. Simulated seat counts, fares, and metrics in this prototype are for educational demonstration rather than official Indian Railways operational data.
+### Algorithm & Code Prototyping: 
 
-Limitations & Future Scaling
-Local JSON Persistence: Uses data/db.json for local state instead of a production database (such as PostgreSQL or SQLite).
+Assisted in drafting pseudocode variations, test scenarios, and full-stack Express/HTML/CSS/JS scaffolding for local testing.
 
-Simulated Telemetry: Train occupancy, waitlists, and revenue figures are illustrative test data designed for local simulation.
+### Human Verification & Accountability:
 
-Multi-Zone Expansion: Additional Indian Railways zones and divisions can be added by extending the dataset schema and routing filters.
+ All logic edge cases (such as symmetric time differences, seat buffers, and invalid capacity guards), UI themes, train corridor entries, and repository submissions were inspected and tested locally. Simulated seat counts, fares, and metrics in this prototype are for educational demonstration rather than official Indian Railways operational data.
+
+### Limitations & Future Scaling
+
+#### Local JSON Persistence:
+ Uses data/db.json for local state instead of a production database (such as PostgreSQL or SQLite).
+
+#### Simulated Telemetry: 
+Train occupancy, waitlists, and revenue figures are illustrative test data designed for local simulation.
+
+#### Multi-Zone Expansion: 
+Additional Indian Railways zones and divisions can be added by extending the dataset schema and routing filters.

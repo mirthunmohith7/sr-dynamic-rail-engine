@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Train Tickets | Southern Railway</title>
+  <link rel="stylesheet" href="/css/user.css" />
+</head>
+<body>
+  <header class="ir-navbar">
+    <div class="ir-brand">
+      <div class="ir-emblem">SR</div>
+      <div>
+        <h1>SOUTHERN RAILWAY — E-TICKETING</h1>
+        <span>Zone: Southern Railway (SR) • Scalable IR Network</span>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="savings-pill">
+        Welcome, <span id="nav-username">Passenger</span> &nbsp;|&nbsp; Total Saved: <strong id="nav-saved">₹0</strong>
+      </div>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Search Panel -->
+    <section class="search-panel">
+      <div class="search-grid">
+        <div class="form-group" style="margin:0;">
+          <label for="origin-select">From Station</label>
+          <select id="origin-select">
+            <option value="">All Origin Stations</option>
+            <option value="MAS">MGR Chennai Central (MAS)</option>
+            <option value="MS">Chennai Egmore (MS)</option>
+            <option value="ED">Erode Jn (ED)</option>
+            <option value="ERS">Ernakulam Jn (ERS)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin:0;">
+          <label for="dest-select">To Station</label>
+          <select id="dest-select">
+            <option value="">All Destination Stations</option>
+            <option value="CBE">Coimbatore Jn (CBE)</option>
+            <option value="SBC">KSR Bengaluru (SBC)</option>
+            <option value="MDU">Madurai Jn (MDU)</option>
+            <option value="TVC">Thiruvananthapuram Central (TVC)</option>
+            <option value="MAQ">Mangaluru Central (MAQ)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin:0;">
+          <label for="flex-select">Schedule Flexibility</label>
+          <select id="flex-select">
+            <option value="0">Exact Time Only (No Shift)</option>
+            <option value="3">Flexible (± 3 Hours)</option>
+            <option value="6" selected>Flexible (± 6 Hours)</option>
+            <option value="10">Anytime Same Day (± 10 Hours)</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin:0;">
+          <label for="zone-select">Railway Zone</label>
+          <select id="zone-select">
+            <option value="SR" selected>Southern Railway (SR)</option>
+            <option value="ALL">All Indian Railways Zones</option>
+          </select>
+        </div>
+
+        <button class="btn-search" onclick="loadTrains()">Search Trains</button>
+      </div>
+    </section>
+
+    <!-- Results & Tickets -->
+    <div class="main-grid">
+      <div>
+        <div class="section-title">
+          <span>Available Southern Railway Trains</span>
+          <span id="train-count" style="font-size:13px; color:#64748b;"></span>
+        </div>
+        <div id="trains-list"></div>
+      </div>
+
+      <div>
+        <div class="section-title">
+          <span>My Booked E-Tickets</span>
+        </div>
+        <div id="tickets-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking & Smart Off-Peak Offer Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-card">
+      <h3 style="color:#002b5c; margin-bottom:6px;" id="modal-train-title">Book Ticket</h3>
+      <p style="font-size:13px; color:#64748b; margin-bottom:14px;" id="modal-train-sub"></p>
+
+      <!-- Smart Off-Peak Incentive Prompt (Shown only when peak train is waitlisted & off-peak seats exist) -->
+      <div class="smart-offer-box" id="smart-offer-box" style="display:none;">
+        <h4>Confirmed Seat + Instant Fare Discount Available!</h4>
+        <p id="smart-offer-text"></p>
+        <div class="offer-actions">
+          <button type="button" class="btn-accept-offer" id="btn-accept-offer">Book Off-Peak & Save ₹0</button>
+          <button type="button" class="btn-decline-offer" onclick="declineOffer()">Keep Waitlist</button>
+        </div>
+      </div>
+
+      <form id="confirm-booking-form">
+        <div class="form-group">
+          <label>Passenger Full Name</label>
+          <input type="text" id="book-passenger-name" required />
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input type="number" id="book-passenger-age" value="21" min="5" max="99" required />
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+          <div>
+            <span style="font-size:12px; color:#64748b;">Total Payable</span>
+            <div style="font-size:20px; font-weight:800; color:#002b5c;" id="modal-payable">₹0</div>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button type="button" class="btn-decline-offer" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="btn-book" style="padding:10px 20px;">Confirm & Pay</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/user.js"></script>
+</body>
+</html>

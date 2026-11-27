@@ -1,0 +1,441 @@
+:root {
+  --ir-navy: #002b5c;
+  --ir-blue: #00529b;
+  --ir-saffron: #f37021;
+  --ir-bg: #f4f7fb;
+  --ir-card: #ffffff;
+  --ir-border: #dbe3ee;
+  --ir-text: #1e293b;
+  --ir-muted: #64748b;
+  --ir-green: #15803d;
+  --ir-green-bg: #dcfce7;
+  --ir-red: #b91c1c;
+  --ir-red-bg: #fee2e2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--ir-bg);
+  color: var(--ir-text);
+  min-height: 100vh;
+}
+
+/* Navbar */
+.ir-navbar {
+  background: linear-gradient(90deg, var(--ir-navy) 0%, var(--ir-blue) 100%);
+  color: #fff;
+  padding: 14px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid var(--ir-saffron);
+}
+
+.ir-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ir-emblem {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: var(--ir-navy);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.ir-brand h1 {
+  font-size: 18px;
+  letter-spacing: 0.3px;
+}
+
+.ir-brand span {
+  font-size: 12px;
+  opacity: 0.85;
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.savings-pill {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.savings-pill strong {
+  color: #fde047;
+  font-size: 15px;
+}
+
+.btn-logout {
+  background: var(--ir-saffron);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Auth Screen */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 76px);
+  padding: 24px;
+}
+
+.auth-card {
+  background: var(--ir-card);
+  width: 100%;
+  max-width: 420px;
+  border-radius: 10px;
+  border: 1px solid var(--ir-border);
+  box-shadow: 0 10px 25px rgba(0, 43, 92, 0.08);
+  overflow: hidden;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #e9eff7;
+}
+
+.auth-tab {
+  padding: 14px;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: var(--ir-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.auth-tab.active {
+  background: #fff;
+  color: var(--ir-navy);
+  border-bottom-color: var(--ir-saffron);
+}
+
+.auth-body {
+  padding: 28px;
+}
+
+.auth-body h2 {
+  font-size: 20px;
+  color: var(--ir-navy);
+  margin-bottom: 6px;
+}
+
+.auth-body p {
+  font-size: 13px;
+  color: var(--ir-muted);
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--ir-text);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ir-border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 11px;
+  background: var(--ir-blue);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--ir-navy);
+}
+
+.error-msg {
+  color: var(--ir-red);
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: none;
+}
+
+/* Dashboard Layout */
+.container {
+  max-width: 1180px;
+  margin: 26px auto;
+  padding: 0 20px;
+}
+
+.search-panel {
+  background: var(--ir-card);
+  border: 1px solid var(--ir-border);
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  margin-bottom: 24px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr 1fr auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.btn-search {
+  background: var(--ir-saffron);
+  color: #fff;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ir-navy);
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.train-card {
+  background: var(--ir-card);
+  border: 1px solid var(--ir-border);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.train-meta h3 {
+  font-size: 16px;
+  color: var(--ir-navy);
+}
+
+.train-no {
+  background: #e2e8f0;
+  color: var(--ir-navy);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+.train-route {
+  font-size: 13px;
+  color: var(--ir-muted);
+  margin-top: 6px;
+}
+
+.train-via {
+  font-size: 12px;
+  color: #475569;
+  margin-top: 4px;
+}
+
+.train-action {
+  text-align: right;
+  min-width: 170px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.status-avl {
+  background: var(--ir-green-bg);
+  color: var(--ir-green);
+}
+
+.status-wl {
+  background: var(--ir-red-bg);
+  color: var(--ir-red);
+}
+
+.fare-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ir-text);
+  margin-bottom: 8px;
+}
+
+.btn-book {
+  background: var(--ir-blue);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Smart Offer Banner inside Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 50;
+}
+
+.modal-card {
+  background: #fff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+}
+
+.smart-offer-box {
+  background: #fffbeb;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.smart-offer-box h4 {
+  color: #b45309;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.smart-offer-box p {
+  font-size: 13px;
+  color: #78350f;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.offer-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-accept-offer {
+  background: var(--ir-green);
+  color: #fff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  flex: 1;
+}
+
+.btn-decline-offer {
+  background: #e2e8f0;
+  color: var(--ir-text);
+  border: none;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Ticket History */
+.ticket-card {
+  background: var(--ir-card);
+  border: 1px solid var(--ir-border);
+  border-left: 4px solid var(--ir-blue);
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.ticket-card.shifted {
+  border-left-color: var(--ir-green);
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--ir-muted);
+  margin-bottom: 4px;
+}
+
+.ticket-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ir-navy);
+}
+
+.saved-tag {
+  display: inline-block;
+  margin-top: 6px;
+  background: var(--ir-green-bg);
+  color: var(--ir-green);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+@media (max-width: 900px) {
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}

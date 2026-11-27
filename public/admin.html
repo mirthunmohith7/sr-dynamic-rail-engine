@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Operations Control | Southern Railway</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+  <header class="admin-header">
+    <div>
+      <h1>Southern Railway — Dynamic Load Control Center</h1>
+      <span>RESTRICTED OPERATIONS CONSOLE • APPROACH B ENGINE TELEMETRY</span>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn-bw" onclick="resetSimulation()">Reset Data</button>
+      <button class="btn-bw" onclick="logoutAdmin()">Exit Admin</button>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <!-- 4 Monochrome KPI Cards -->
+    <section class="kpi-grid">
+      <div class="kpi-box inverted">
+        <div class="kpi-label">Passengers Shifted (Peak → Off-Peak)</div>
+        <div class="kpi-value" id="kpi-shifted">0</div>
+        <div class="kpi-sub">Waitlist congestion relieved</div>
+      </div>
+
+      <div class="kpi-box">
+        <div class="kpi-label">Revenue Recovered (Off-Peak)</div>
+        <div class="kpi-value" id="kpi-recovered">₹0</div>
+        <div class="kpi-sub">Generated from otherwise empty berths</div>
+      </div>
+
+      <div class="kpi-box">
+        <div class="kpi-label">Unrealized Revenue Lost</div>
+        <div class="kpi-value" id="kpi-lost">₹0</div>
+        <div class="kpi-sub"><span id="kpi-empty-seats">0</span> empty off-peak seats remaining</div>
+      </div>
+
+      <div class="kpi-box">
+        <div class="kpi-label">Total System Bookings</div>
+        <div class="kpi-value" id="kpi-total-bookings">0</div>
+        <div class="kpi-sub">Across Southern Railway corridors</div>
+      </div>
+    </section>
+
+    <div class="panel-grid">
+      <!-- Mechanism Control Panel -->
+      <section class="bw-panel">
+        <h2>Mechanism Parameters (Approach B)</h2>
+        <form id="config-form">
+          <div class="control-row">
+            <label>Engine Status</label>
+            <select id="cfg-enabled">
+              <option value="true">ACTIVE (Dynamic Nudges Enabled)</option>
+              <option value="false">DISABLED (Static Pricing Only)</option>
+            </select>
+          </div>
+
+          <div class="control-row">
+            <label>Minimum Off-Peak Buffer Seats</label>
+            <input type="number" id="cfg-buffer" min="0" max="50" required />
+          </div>
+
+          <div class="control-row">
+            <label>Tier 1 High-Vacancy Threshold (Ratio 0.1 - 0.9)</label>
+            <input type="number" id="cfg-t1-thresh" step="0.05" min="0.1" max="0.9" required />
+          </div>
+
+          <div class="control-row">
+            <label>Tier 1 Discount Rate (e.g. 0.30 = 30%)</label>
+            <input type="number" id="cfg-t1-disc" step="0.05" min="0.05" max="0.60" required />
+          </div>
+
+          <div class="control-row">
+            <label>Tier 2 Medium-Vacancy Threshold (Ratio 0.1 - 0.9)</label>
+            <input type="number" id="cfg-t2-thresh" step="0.05" min="0.05" max="0.8" required />
+          </div>
+
+          <div class="control-row">
+            <label>Tier 2 Discount Rate (e.g. 0.20 = 20%)</label>
+            <input type="number" id="cfg-t2-disc" step="0.05" min="0.05" max="0.50" required />
+          </div>
+
+          <div class="control-row">
+            <label>Tier 3 Base Off-Peak Discount (e.g. 0.10 = 10%)</label>
+            <input type="number" id="cfg-t3-disc" step="0.05" min="0.00" max="0.40" required />
+          </div>
+
+          <button type="submit" class="btn-bw-dark" style="width:100%;">Apply Mechanism Changes</button>
+          <p id="cfg-status" style="font-size:12px; font-weight:700; margin-top:8px;"></p>
+        </form>
+      </section>
+
+      <!-- Live Shift Audit Log -->
+      <section class="bw-panel">
+        <h2>Live Passenger Shift & Booking Ledger</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>PNR</th>
+              <th>Passenger</th>
+              <th>Train</th>
+              <th>Type</th>
+              <th>Fare Paid</th>
+            </tr>
+          </thead>
+          <tbody id="ledger-body"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Southern Railway Fleet Occupancy Table -->
+    <section class="bw-panel">
+      <h2>Southern Railway Corridor Load Telemetry</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Train No</th>
+            <th>Train Name</th>
+            <th>Route</th>
+            <th>Dep</th>
+            <th>Occupancy</th>
+            <th>Status</th>
+            <th>Unutilized Value</th>
+          </tr>
+        </thead>
+        <tbody id="fleet-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

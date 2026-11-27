@@ -1,0 +1,12 @@
+{
+  "name": "sr-dynamic-rail-engine",
+  "version": "1.0.0",
+  "description": "Dynamic Off-Peak Train Incentive & Seat Recommendation Engine (Southern Railway)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

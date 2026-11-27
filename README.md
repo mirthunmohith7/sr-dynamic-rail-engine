@@ -47,11 +47,12 @@ sr-dynamic-rail-engine/
         ├── auth.js             # Login, registration & hidden role routing
         ├── user.js             # Route search, off-peak offers & bookings
         └── admin.js            # Mechanism controls & fleet telemetry
+```
 
 Quick Start (Local Server)
 Install dependencies from the project root (sr-dynamic-rail-engine):
 
-'''
+bash
 npm install
 Windows PowerShell Note: If script execution is blocked (npm.ps1), run npm.cmd install or switch to cmd.
 '''

@@ -49,18 +49,19 @@ sr-dynamic-rail-engine/
         └── admin.js            # Mechanism controls & fleet telemetry
 ```
 
-Quick Start (Local Server)
+### Quick Start (Local Server)
+
 Install dependencies from the project root (sr-dynamic-rail-engine):
 
-bash
+```text
 npm install
+```
 Windows PowerShell Note: If script execution is blocked (npm.ps1), run npm.cmd install or switch to cmd.
 
 Start the local server:
-
-Bash
+```text
 npm start
-
+```
 Open in browser:
 ```text
 Plaintext

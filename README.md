@@ -1,18 +1,29 @@
 # Southern Railway Dynamic Off-Peak Train Incentive & Seat Recommendation Engine
 
-A full-stack prototype built for **Introduction to Problem Solving (25ESCS01)** at **JAIN (Deemed to be University)** (Faculty of Engineering and Technology, B.Tech CSE). It addresses peak-hour train waitlists occurring alongside off-peak seat vacancies on interstate corridors by nudging time-flexible passengers toward underutilized off-peak departures with instant confirmed seating and tiered fare discounts.
+> **Coursework Prototype — Introduction to Problem Solving (`25ESCS01`)**  
+> **Faculty of Engineering and Technology, JAIN (Deemed to be University)**
+
+![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat-square&logo=node.js&logoColor=white)
+![Frontend](https://img.shields.io/badge/Frontend-HTML5%20%7C%20CSS3%20%7C%20JS-1572B6?style=flat-square)
+![Scope](https://img.shields.io/badge/Network-Southern%20Railway%20(SR)-003366?style=flat-square)
+![AI Disclosure](https://img.shields.io/badge/AI%20Assistance-Disclosed%20%26%20Verified-111111?style=flat-square)
+
+---
+
+## Overview
+
+Interstate rail corridors frequently experience **peak-hour waitlists** alongside **off-peak seat vacancies** on the exact same routes. This application models and demonstrates a **Dynamic Off-Peak Train Incentive & Seat Recommendation Engine** (based on the refined **Approach B** logic) for **Southern Railway (`SR`)**, structured with zone and division fields so it can scale across all Indian Railways zones.
+
+---
 
 ## Key Features
 
-- **Passenger Portal (Indian Railways Theme):**
-  - Unified sign-in and new passenger registration (`/index.html`, `/dashboard.html`).
-  - Route search across Southern Railway (`SR`) corridors (Chennai, Bengaluru, Erode, Coimbatore, Madurai, Ernakulam, Thiruvananthapuram, Mangaluru) with a scalable zone/division schema ready to expand across all Indian Railways zones.
-  - Real-time off-peak alternative prompts when a requested peak train is full and an underutilized off-peak train falls within the passenger's flexibility window.
-  - Personal tracking for **Total Saved (₹)** and booked e-tickets with PNRs.
-- **Hidden Admin Operations Console (Monochrome Black & White Theme):**
-  - Accessible by signing in on the standard login form using restricted admin credentials (`admin@sr.rail.gov.in` / `SR_ADMIN_2026`).
-  - Live mechanism parameter controls (engine toggle, minimum off-peak buffer seats, vacancy thresholds, and tiered discounts).
-  - Real-time metrics tracking passengers shifted from peak to off-peak, revenue recovered from empty berths, and unrealized revenue lost on remaining empty seats.
+| Portal | Theme | Capabilities |
+| :--- | :--- | :--- |
+| **Passenger Portal** (`/index.html`, `/dashboard.html`) | Indian Railways Navy, Blue & Saffron | • Sign in or register a new passenger account<br>• Search Southern Railway (`SR`) trains & corridors<br>• Receive real-time off-peak confirmed seat & fare-discount offers when a peak train is full and fits your flexibility window<br>• Track personal **Total Saved (₹)** and booked e-tickets with PNRs |
+| **Hidden Admin Console** (`/admin.html`) | Strict Monochrome Black & White | • Accessed via the standard login form using restricted admin credentials (`admin@sr.rail.gov.in` / `SR_ADMIN_2026`) — no visible admin link on the passenger UI<br>• Tune engine status, seat buffer thresholds, vacancy triggers, and tiered discounts live<br>• Monitor passengers shifted, revenue recovered from empty berths, and unrealized revenue lost |
+
+---
 
 ## Project Structure
 
@@ -21,17 +32,53 @@ sr-dynamic-rail-engine/
 ├── package.json
 ├── server.js
 ├── README.md
+├── .gitignore
 ├── data/
-│   ├── db.json                 # Auto-generated persistent store (users, bookings, config)
-│   └── southern_trains.js      # Southern Railway (SR) train & corridor dataset
+│   ├── db.json                 # Auto-generated local store (ignored in Git)
+│   └── southern_trains.js      # Scalable Southern Railway (SR) dataset
 └── public/
     ├── index.html              # Unified Login & New User Registration
     ├── dashboard.html          # Passenger Booking Portal
     ├── admin.html              # Hidden Admin Control Center
     ├── css/
-    │   ├── user.css            # Indian Railways blue/saffron theme
-    │   └── admin.css           # Black & white operations theme
+    │   ├── user.css            # Indian Railways blue/saffron stylesheet
+    │   └── admin.css           # Black & white operations stylesheet
     └── js/
-        ├── auth.js             # Authentication, registration & role routing
-        ├── user.js             # Train search, off-peak offers & ticket booking
-        └── admin.js            # Admin telemetry & parameter controls
+        ├── auth.js             # Login, registration & hidden role routing
+        ├── user.js             # Route search, off-peak offers & bookings
+        └── admin.js            # Mechanism controls & fleet telemetry
+Quick Start (Local Server)
+Install dependencies from the project root (sr-dynamic-rail-engine):
+
+Bash
+npm install
+Windows PowerShell Note: If script execution is blocked (npm.ps1), run npm.cmd install or switch to cmd.
+
+Start the local server:
+
+Bash
+npm start
+Open in browser:
+
+Plaintext
+http://localhost:3000
+Demo Credentials
+Passenger Account: mirthun@jain.ac.in / password123 (or create any new account via New User Registration)
+
+Hidden Admin Account: admin@sr.rail.gov.in / SR_ADMIN_2026
+
+AI Use Disclosure
+AI assistance (Gemini) was used as a collaborative drafting and prototyping aid during coursework development, subject to manual review, verification, and refinement by the author:
+
+Problem Framing & Workbook Structuring: Helped organize observations, five-element checks, comparisons, and drafts into the required workbook formats while keeping final problem statements and boundaries aligned with the coursework problem.
+
+Algorithm & Code Prototyping: Assisted in drafting pseudocode variations, test scenarios, and full-stack Express/HTML/CSS/JS scaffolding for local testing.
+
+Human Verification & Accountability: All logic edge cases (such as symmetric time differences, seat buffers, and invalid capacity guards), UI themes, train corridor entries, and repository submissions were inspected and tested locally. Simulated seat counts, fares, and metrics in this prototype are for educational demonstration rather than official Indian Railways operational data.
+
+Limitations & Future Scaling
+Local JSON Persistence: Uses data/db.json for local state instead of a production database (such as PostgreSQL or SQLite).
+
+Simulated Telemetry: Train occupancy, waitlists, and revenue figures are illustrative test data designed for local simulation.
+
+Multi-Zone Expansion: Additional Indian Railways zones and divisions can be added by extending the dataset schema and routing filters.
